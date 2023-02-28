@@ -1,6 +1,6 @@
 {
   "name": "@criusm/ssl-pinning",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Native implementation of SSL Pinning for Android and iOS",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
