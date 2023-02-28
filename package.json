@@ -1,7 +1,7 @@
 {
-  "name": "ssl-pinning",
-  "version": "0.1.0",
-  "description": "test",
+  "name": "@criusm/ssl-pinning",
+  "version": "1.0.0",
+  "description": "Native implementation of SSL Pinning for Android and iOS",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -41,13 +41,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/ItzPlayMind/RNSslPinning",
+  "repository": "https://github.com/ItzPlayMind/SSLPinning",
   "author": "criusm <mgraf300502@gmail.com> (https://github.com/ItzPlayMind)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ItzPlayMind/RNSslPinning/issues"
+    "url": "https://github.com/ItzPlayMind/SSLPinning/issues"
   },
-  "homepage": "https://github.com/ItzPlayMind/RNSslPinning#readme",
+  "homepage": "https://github.com/ItzPlayMind/SSLPinning#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

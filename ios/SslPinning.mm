@@ -1,18 +1,46 @@
+#import <Foundation/Foundation.h>
 #import "SslPinning.h"
+#import <TrustKit/TrustKit.h>
+#import <TrustKit/TSKPinningValidator.h>
+#import <TrustKit/TSKPinningValidatorCallback.h>
 
 @implementation SslPinning
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(SslPinning);
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+static NSMutableDictionary *public_keys;
+
+RCT_EXPORT_METHOD(setup)
 {
-    NSNumber *result = @(a * b);
+  public_keys = [NSMutableDictionary dictionary];
+}
 
-    resolve(result);
+RCT_EXPORT_METHOD(addPublicKey: (NSString *)hostname key: (NSString *)key)
+{
+  [public_keys setObject: @{
+            kTSKIncludeSubdomains: @YES,
+            kTSKEnforcePinning: @YES,
+            kTSKDisableDefaultReportUri: @YES,
+            kTSKPublicKeyHashes : @[
+              key,
+              @"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=",
+            ],
+  } forKey:hostname];
+
+}
+
+RCT_EXPORT_METHOD(save)
+{
+    NSMutableDictionary *config = [NSMutableDictionary dictionary];
+    NSDictionary *keys = [public_keys copy];
+    [config setObject:keys forKey:kTSKPinnedDomains];
+    [config setObject:@YES forKey:kTSKSwizzleNetworkDelegates];
+    NSDictionary *trustKitConfig = [config copy];
+    [TrustKit initSharedInstanceWithConfiguration:trustKitConfig];
+    [TrustKit sharedInstance].pinningValidatorCallback = ^(TSKPinningValidatorResult *result, NSString *notedHostname, TKSDomainPinningPolicy *policy) {
+        if (result.finalTrustDecision == TSKTrustEvaluationFailedNoMatchingPin) {
+          
+        }
+    };
 }
 
 // Don't compile this code when we build for the old architecture.
@@ -24,4 +52,6 @@ RCT_REMAP_METHOD(multiply,
 }
 #endif
 
+
 @end
+  

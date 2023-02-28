@@ -12,11 +12,12 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "11.0" }
-  s.source       = { :git => "https://github.com/ItzPlayMind/RNSslPinning.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ItzPlayMind/SSLPinning.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm}"
 
   s.dependency "React-Core"
+  s.dependency "TrustKit", "1.6.5"
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
