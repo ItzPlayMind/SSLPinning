@@ -9,14 +9,14 @@
 
 ## Usage
 ```javascript
-import RNSslPinning from 'rn-ssl-pinning';
+import SslPinning from 'rn-ssl-pinning';
 
 //Setup the RNSslPinning for Android and iOS
-RNSslPinning.setup();
+SslPinning.setup();
 //Add a Public key to the list
-RNSslPinning.addPublicKey("www.your-url.com", "YOUR_PUBLIC_KEY");
+SslPinning.addPublicKey("www.your-url.com", "YOUR_PUBLIC_KEY");
 //Save all keys added and update on Android and iOS
-RNSslPinning.save();
+SslPinning.save();
 ```
 
 To get the public key of a Server use the following command (Replace example.com with your server adress):
