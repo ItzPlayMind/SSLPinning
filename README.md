@@ -1,9 +1,9 @@
 
-# @criusm/rn-native-ssl-pinning
+# @criusm/ssl-pinning
 
 ## Getting started
 
-`$ npm install @criusm/rn-native-ssl-pinning`
+`$ npm install @criusm/ssl-pinning`
 
 ### Mostly automatic installation
 
