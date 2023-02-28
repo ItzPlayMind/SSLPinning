@@ -9,7 +9,7 @@
 
 ## Usage
 ```javascript
-import SslPinning from 'rn-ssl-pinning';
+import SslPinning from '@criusm/ssl-pinning';
 
 //Setup the RNSslPinning for Android and iOS
 SslPinning.setup();
